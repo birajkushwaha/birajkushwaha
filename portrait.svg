@@ -30,7 +30,7 @@ text {
 
 .ascii-text {
     font-size: 11px;
-    fill: #39d353;
+    fill: #7df9ff;
     white-space: pre;
 }
 </style>

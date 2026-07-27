@@ -110,7 +110,7 @@ text {{
 
 .ascii-text {{
     font-size: {FONT_SIZE}px;
-    fill: #39d353;
+    fill: #7df9ff;
     white-space: pre;
 }}
 </style>
