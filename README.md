@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>Hi 👋 I'm Biraj Kushwaha</h1>
+<h1>Hi I'm Biraj Kushwaha</h1>
 
 <h3>Java Backend Developer | Spring Boot | Microservices | Kafka | Cloud | AI</h3>
 
