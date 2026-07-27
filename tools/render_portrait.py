@@ -20,19 +20,19 @@ TITLE = "#ffffff"
 # ASCII GRID CONFIG
 # ==========================================
 # Content box inside window frame:
-# Header takes y=0..84. Content Y from 100 to 950 (height ~850px, width ~640px)
+# Header takes y=0..84. Content Y from 95 to 960 (height ~865px, width ~640px)
 CONTENT_X = 20
-CONTENT_Y = 100
+CONTENT_Y = 95
 CONTENT_W = 640
-CONTENT_H = 850
+CONTENT_H = 865
 
 # Character sizing
 FONT_SIZE = 11
 LINE_HEIGHT = 12.5
 CHAR_WIDTH = 6.6  # Approx width of Consolas at 11px font-size
 
-COLS = int(CONTENT_W / CHAR_WIDTH)  # ~96 columns
-ROWS = int(CONTENT_H / LINE_HEIGHT)  # ~68 rows
+COLS = int(CONTENT_W / CHAR_WIDTH)   # ~96 columns
+ROWS = int(CONTENT_H / LINE_HEIGHT)  # ~69 rows
 
 # ----------------------------
 # Process Image
@@ -104,7 +104,7 @@ text {{
 
 .title {{
     fill: {TITLE};
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
 }}
 
@@ -112,11 +112,6 @@ text {{
     font-size: {FONT_SIZE}px;
     fill: #39d353;
     white-space: pre;
-}}
-
-.footer {{
-    fill: #7d8590;
-    font-size: 14px;
 }}
 </style>
 ''')
@@ -147,7 +142,7 @@ svg.append('''
 x="140"
 y="49"
 class="title">
-biraj@github: ~/portrait
+Portrait
 </text>
 ''')
 
@@ -185,24 +180,6 @@ x="{start_x}"
 y="{row_y}"
 class="ascii-text"
 clip-path="url(#{clip_id})">{row}</text>
-''')
-
-# Footer Divider & Text
-svg.append(f'''
-<line
-x1="20"
-y1="{CANVAS_H - 50}"
-x2="{CANVAS_W - 20}"
-y2="{CANVAS_H - 50}"
-stroke="{BORDER}"
-stroke-width="2"/>
-
-<text
-x="20"
-y="{CANVAS_H - 20}"
-class="footer">
-ASCII Portrait • Java Backend Developer
-</text>
 ''')
 
 svg.append("</svg>")
