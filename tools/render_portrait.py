@@ -6,107 +6,206 @@ OUTPUT = Path("portrait.svg")
 
 GLYPHS = " '.,:;~+*xXO#"
 
-WIDTH = 80
-FONT_SIZE = 8
-LINE_HEIGHT = 10
+# ==========================================
+# CANVAS CONFIG (Matches sysinfo.svg aspect 340x490 @ 2x = 680x980)
+# ==========================================
+CANVAS_W = 680
+CANVAS_H = 980
+
+BACKGROUND = "#0d1117"
+BORDER = "#30363d"
+TITLE = "#ffffff"
+
+# ==========================================
+# ASCII GRID CONFIG
+# ==========================================
+# Content box inside window frame:
+# Header takes y=0..84. Content Y from 100 to 950 (height ~850px, width ~640px)
+CONTENT_X = 20
+CONTENT_Y = 100
+CONTENT_W = 640
+CONTENT_H = 850
+
+# Character sizing
+FONT_SIZE = 11
+LINE_HEIGHT = 12.5
+CHAR_WIDTH = 6.6  # Approx width of Consolas at 11px font-size
+
+COLS = int(CONTENT_W / CHAR_WIDTH)  # ~96 columns
+ROWS = int(CONTENT_H / LINE_HEIGHT)  # ~68 rows
 
 # ----------------------------
-# Load image WITH alpha channel
+# Process Image
 # ----------------------------
-
 img = Image.open(INPUT).convert("RGBA")
 
-aspect = img.height / img.width
-HEIGHT = int(WIDTH * aspect * 0.55)
+# Crop tight alpha bounding box
+alpha = img.split()[-1]
+bbox = alpha.getbbox()
+if bbox:
+    img = img.crop(bbox)
 
-img = img.resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
-
-pixels = img.load()
+# Resize to ASCII grid dimensions
+img_resized = img.resize((COLS, ROWS), Image.Resampling.LANCZOS)
+pixels = img_resized.load()
 
 rows = []
-
-for y in range(HEIGHT):
-
+for y in range(ROWS):
     line = ""
-
-    for x in range(WIDTH):
-
+    for x in range(COLS):
         r, g, b, a = pixels[x, y]
-
-        # Transparent background -> empty space
         if a < 10:
             line += " "
             continue
 
-        # Convert RGB to grayscale
         gray = int(0.299 * r + 0.587 * g + 0.114 * b)
-
-        # Gamma correction
-        gray = int((gray / 255) ** 0.8 * 255)
-
-        index = int((255 - gray) / 255 * (len(GLYPHS) - 1))
+        index = int(gray / 255 * (len(GLYPHS) - 1))
         index = max(0, min(index, len(GLYPHS) - 1))
-
         line += GLYPHS[index]
 
-    # pyrefly: ignore [parse-error]
     rows.append(line)
 
-svg_width = WIDTH * FONT_SIZE
-svg_height = HEIGHT * LINE_HEIGHT
+# Calculate exact ASCII rendered box to center it horizontally and vertically inside content area
+ascii_render_w = COLS * CHAR_WIDTH
+ascii_render_h = ROWS * LINE_HEIGHT
 
+start_x = CONTENT_X + (CONTENT_W - ascii_render_w) / 2
+start_y = CONTENT_Y + (CONTENT_H - ascii_render_h) / 2
+
+# ----------------------------
+# Generate SVG
+# ----------------------------
 svg = []
-
 svg.append(f'''<svg xmlns="http://www.w3.org/2000/svg"
-width="{svg_width}"
-height="{svg_height}"
-viewBox="0 0 {svg_width} {svg_height}">
+width="{CANVAS_W}"
+height="{CANVAS_H}"
+viewBox="0 0 {CANVAS_W} {CANVAS_H}">
 ''')
 
-svg.append("""
+svg.append(f'''
+<defs>
+<filter id="glow">
+    <feGaussianBlur stdDeviation="2" result="blur"/>
+    <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+</filter>
+</defs>
+
 <style>
+svg {{
+    background: {BACKGROUND};
+}}
 
-svg{
-background:#0d1117;
-}
+text {{
+    font-family: Consolas, Menlo, monospace;
+}}
 
-text{
-font-family:Consolas,monospace;
-font-size:8px;
-fill:#7df9ff;
-white-space:pre;
-}
+.title {{
+    fill: {TITLE};
+    font-size: 18px;
+    font-weight: bold;
+}}
 
+.ascii-text {{
+    font-size: {FONT_SIZE}px;
+    fill: #39d353;
+    white-space: pre;
+}}
+
+.footer {{
+    fill: #7d8590;
+    font-size: 14px;
+}}
 </style>
-""")
+''')
 
+# Outer Window Card Frame
+svg.append(f'''
+<rect
+x="2"
+y="2"
+width="{CANVAS_W-4}"
+height="{CANVAS_H-4}"
+rx="24"
+fill="{BACKGROUND}"
+stroke="{BORDER}"
+stroke-width="3"/>
+''')
+
+# macOS Window Buttons
+svg.append('''
+<circle cx="36" cy="42" r="10" fill="#ff5f56"/>
+<circle cx="68" cy="42" r="10" fill="#ffbd2e"/>
+<circle cx="100" cy="42" r="10" fill="#27c93f"/>
+''')
+
+# Window Title
+svg.append('''
+<text
+x="140"
+y="49"
+class="title">
+biraj@github: ~/portrait
+</text>
+''')
+
+# Window Header Divider
+svg.append(f'''
+<line
+x1="0"
+y1="84"
+x2="{CANVAS_W}"
+y2="84"
+stroke="{BORDER}"
+stroke-width="2"/>
+''')
+
+# ASCII Portrait Rows with Animation
 for i, row in enumerate(rows):
-
-    clip = f"clip{i}"
-
+    clip_id = f"clip{i}"
+    row_y = start_y + (i + 1) * LINE_HEIGHT
+    
     svg.append(f'''
-<clipPath id="{clip}">
-<rect x="0" y="{i*LINE_HEIGHT}" width="0" height="{LINE_HEIGHT}">
+<clipPath id="{clip_id}">
+<rect x="{start_x}" y="{start_y + i * LINE_HEIGHT}" width="0" height="{LINE_HEIGHT}">
 <animate
 attributeName="width"
 from="0"
-to="{svg_width}"
-begin="{i*0.04}s"
+to="{ascii_render_w}"
+begin="{i * 0.03:.2f}s"
 dur="0.25s"
 fill="freeze"/>
 </rect>
 </clipPath>
+
+<text
+x="{start_x}"
+y="{row_y}"
+class="ascii-text"
+clip-path="url(#{clip_id})">{row}</text>
 ''')
 
-    svg.append(f'''
+# Footer Divider & Text
+svg.append(f'''
+<line
+x1="20"
+y1="{CANVAS_H - 50}"
+x2="{CANVAS_W - 20}"
+y2="{CANVAS_H - 50}"
+stroke="{BORDER}"
+stroke-width="2"/>
+
 <text
-x="0"
-y="{(i+1)*LINE_HEIGHT}"
-clip-path="url(#{clip})">{row}</text>
+x="20"
+y="{CANVAS_H - 20}"
+class="footer">
+ASCII Portrait • Java Backend Developer
+</text>
 ''')
 
 svg.append("</svg>")
 
 OUTPUT.write_text("".join(svg), encoding="utf-8")
-
-print("Saved -> portrait.svg")
+print(f"Saved -> {OUTPUT}")
