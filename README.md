@@ -3,16 +3,26 @@
 
 <p>Building scalable backend applications with Java, Spring Boot, and modern cloud technologies.</p>
 
-</div>
 <div align="center">
 
-<p align="center">
+<table>
+<tr>
 
-<img src="./portrait.svg" width="320" alt="ASCII Portrait"/>
+<td valign="top" align="center" width="35%">
 
-<img src="./sysinfo.svg" width="560" alt="Developer Profile"/>
+<img src="./portrait.svg" width="300"/>
 
-</p>
+</td>
+
+<td valign="top" align="center" width="65%">
+
+<img src="./sysinfo.svg" width="560"/>
+
+</td>
+
+</tr>
+
+</table>
 
 </div>
 
