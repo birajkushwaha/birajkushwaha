@@ -1,5 +1,5 @@
 <p align="center">
-  <h3>Java Backend Developer | Spring Boot | Microservices | Kafka | Cloud | AI</h3>
+  <h3>              Java Backend Developer | Spring Boot | Microservices | Kafka | Cloud | AI</h3>
 
 <p>Building scalable backend applications with Java, Spring Boot, and modern cloud technologies.</p>
 
@@ -51,17 +51,6 @@
 <img src="https://skillicons.dev/icons?i=java,spring,mysql,mongodb,docker,git,maven,aws,redis,kafka,python&perline=6"/>
 
 </p>
-<br>
-
-## 📊 GitHub Statistics
-
-<div align="center">
-
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=birajkushwaha&show_icons=true&theme=github_dark&hide_border=true&rank_icon=github"/>
-
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=birajkushwaha&layout=compact&theme=github_dark&hide_border=true"/>
-
-</div>
 <br>
 
 ## 🚀 Featured Projects
