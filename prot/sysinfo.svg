@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+width="560"
+height="420"
+viewBox="0 0 560 420">
+
+<style>
+
+svg{
+background:#0d1117;
+}
+
+.title{
+fill:#58a6ff;
+font-family:Consolas,monospace;
+font-size:20px;
+font-weight:bold;
+}
+
+.row{
+fill:#7df9ff;
+font-family:Consolas,monospace;
+font-size:16px;
+opacity:0;
+animation:fade .5s forwards;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateX(-8px);
+}
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+</style>
+
+<text x="20" y="35" class="title">$ fastfetch</text>
+<line x1="20" y1="50" x2="530" y2="50"
+stroke="#30363d" stroke-width="1"/>
+
+<text
+y="85"
+class="row"
+style="animation-delay:0.0s;">
+
+<tspan x="25">Role</tspan>
+<tspan x="180">: Java Backend Developer</tspan>
+
+</text>
+
+<text
+y="113"
+class="row"
+style="animation-delay:0.25s;">
+
+<tspan x="25">Language</tspan>
+<tspan x="180">: Java • Python • SQL</tspan>
+
+</text>
+
+<text
+y="141"
+class="row"
+style="animation-delay:0.5s;">
+
+<tspan x="25">Framework</tspan>
+<tspan x="180">: Spring Boot</tspan>
+
+</text>
+
+<text
+y="169"
+class="row"
+style="animation-delay:0.75s;">
+
+<tspan x="25">Security</tspan>
+<tspan x="180">: Spring Security • JWT</tspan>
+
+</text>
+
+<text
+y="197"
+class="row"
+style="animation-delay:1.0s;">
+
+<tspan x="25">Database</tspan>
+<tspan x="180">: MySQL • MongoDB</tspan>
+
+</text>
+
+<text
+y="225"
+class="row"
+style="animation-delay:1.25s;">
+
+<tspan x="25">Messaging</tspan>
+<tspan x="180">: Kafka</tspan>
+
+</text>
+
+<text
+y="253"
+class="row"
+style="animation-delay:1.5s;">
+
+<tspan x="25">Architecture</tspan>
+<tspan x="180">: Microservices</tspan>
+
+</text>
+
+<text
+y="281"
+class="row"
+style="animation-delay:1.75s;">
+
+<tspan x="25">Cloud</tspan>
+<tspan x="180">: IBM Cloud • AWS</tspan>
+
+</text>
+
+<text
+y="309"
+class="row"
+style="animation-delay:2.0s;">
+
+<tspan x="25">Testing</tspan>
+<tspan x="180">: JUnit • Mockito</tspan>
+
+</text>
+
+<text
+y="337"
+class="row"
+style="animation-delay:2.25s;">
+
+<tspan x="25">Tools</tspan>
+<tspan x="180">: Git • Maven • Docker</tspan>
+
+</text>
+
+<text
+y="365"
+class="row"
+style="animation-delay:2.5s;">
+
+<tspan x="25">Core CS</tspan>
+<tspan x="180">: DSA • OOP • System Design</tspan>
+
+</text>
+
+<text
+y="393"
+class="row"
+style="animation-delay:2.75s;">
+
+<tspan x="25">AI</tspan>
+<tspan x="180">: Generative AI • LLM APIs</tspan>
+
+</text>
+</svg>
