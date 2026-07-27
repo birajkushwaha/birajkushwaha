@@ -124,25 +124,13 @@ Visit my repositories for additional backend and AI projects.
 
 ## 📫 Connect With Me
 
-<div align="center">
-
-<a href="https://www.linkedin.com/in/biraj-kushwaha-5533b5296/">
-<img src="https://skillicons.dev/icons?i=linkedin"/>
-</a>
-
-&nbsp;&nbsp;
-
-<a href="mailto:birajkushwaha41@gmail.com">
-<img src="https://skillicons.dev/icons?i=gmail"/>
-</a>
-
-&nbsp;&nbsp;
-
-<a href="https://github.com/birajkushwaha">
-<img src="https://skillicons.dev/icons?i=github"/>
-</a>
-
-</div>
+<p align="center">
+  <a href="https://www.linkedin.com/in/biraj-kushwaha-5533b5296/"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn"/></a>
+  &nbsp;&nbsp;
+  <a href="mailto:birajkushwaha41@gmail.com"><img src="https://skillicons.dev/icons?i=gmail" alt="Gmail"/></a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/birajkushwaha"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"/></a>
+</p>
 <br>
 
 <div align="center">
