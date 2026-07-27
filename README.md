@@ -1,3 +1,10 @@
+<div align="center">
+  <h3>Java Backend Developer | Spring Boot | Microservices | Kafka | Cloud | AI</h3>
+  <p>Building scalable backend applications with Java, Spring Boot, and modern cloud technologies.</p>
+</div>
+
+<div align="center">
+
 <table>
 <tr>
 
@@ -18,12 +25,6 @@
 </table>
 
 </div>
-<div align="center">
-  <h3>Java Backend Developer | Spring Boot | Microservices | Kafka | Cloud | AI</h3>
-  <p>Building scalable backend applications with Java, Spring Boot, and modern cloud technologies.</p>
-</div>
-
-
 
 <br>
 
