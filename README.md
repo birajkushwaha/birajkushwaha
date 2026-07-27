@@ -6,25 +6,13 @@
 </div>
 <div align="center">
 
-<table>
+<p align="center">
 
-<tr>
+<img src="./portrait.svg" width="320" alt="ASCII Portrait"/>
 
-<td>
+<img src="./sysinfo.svg" width="560" alt="Developer Profile"/>
 
-<img src="./portrait.svg" width="340"/>
-
-</td>
-
-<td>
-
-<img src="./sysinfo.svg" width="560"/>
-
-</td>
-
-</tr>
-
-</table>
+</p>
 
 </div>
 
